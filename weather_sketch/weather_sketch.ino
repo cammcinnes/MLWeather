@@ -64,56 +64,56 @@ void setup() {
 
 
 void loop() {
+
+  // amount of time between measurements (ms)
+  delay(10000)
+
+
+  int temperatureData = bme.temperature
+  int pressureData = bme.pressure
+  int humidityData = bme.humidity
+  int gasResistance = bme.gas_resistance
+  int altitudeData = bme.readAltitude(SEALEVELPRESSURE_HPA)
+
+  if (! bme.performReading()) {
+    Serial.println("Failed to perform reading from sensor");
+    return;
+    }
+  Serial.print("Temperature = ");
+  Serial.print(bme.temperature);
+  Serial.println(" *C");
+
+  Serial.print("Pressure = ");
+  Serial.print(bme.pressure / 100.0);
+  Serial.println(" hPa");
+
+  Serial.print("Humidity = ");
+  Serial.print(bme.humidity);
+  Serial.println(" %");
+
+  Serial.print("Gas = ");
+  Serial.print(bme.gas_resistance / 1000.0);
+  Serial.println(" KOhms");
+
+  Serial.print("Approx. Altitude = ");
+  Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
+  Serial.println(" m");
+
+  Serial.println();
+
+  Serial.println("\nSending Data to Server..."); 
   // listen for incoming clients
+  // setup the connection to google sheet
   WiFiClient client = server.available();
   if (client) {
-    Serial.println("new client");
-    // an HTTP request ends with a blank line
-    boolean currentLineIsBlank = true;
-    while (client.connected()) {
-      if (client.available()) {
-        char c = client.read();
-        Serial.write(c);
-        // if you've gotten to the end of the line (received a newline
-        // character) and the line is blank, the HTTP request has ended,
-        // so you can send a reply
-        if (c == '\n' && currentLineIsBlank) {
-          // send a standard HTTP response header
-          client.println("HTTP/1.1 200 OK");
-          client.println("Content-Type: text/html");
-          client.println("Connection: close");  // the connection will be closed after completion of the response
-          client.println("Refresh: 5");  // refresh the page automatically every 5 sec
-          client.println();
-          client.println("<!DOCTYPE HTML>");
-          client.println("<html>");
-          // output the value of each analog input pin
-          for (int analogChannel = 0; analogChannel < 6; analogChannel++) {
-            int sensorReading = analogRead(analogChannel);
-            client.print("analog input ");
-            client.print(analogChannel);
-            client.print(" is ");
-            client.print(sensorReading);
-            client.println("<br />");
-          }
-          client.println("</html>");
-          break;
-        }
-        if (c == '\n') {
-          // you're starting a new line
-          currentLineIsBlank = true;
-        } else if (c != '\r') {
-          // you've gotten a character on the current line
-          currentLineIsBlank = false;
-        }
-      }
-    }
-    // give the web browser time to receive the data
-    delay(1);
-
-    // close the connection:
-    client.stop();
-    Serial.println("client disconnected");
+    
   }
+  // give the web browser time to receive the data
+  delay(1);
+
+  // close the connection:
+  client.stop();
+  Serial.println("client disconnected");
 }
 
 
