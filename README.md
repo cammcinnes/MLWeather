@@ -1,8 +1,11 @@
 # MLWeather
+![IMG_4512](https://github.com/cammcinnes/MLWeather/assets/88452661/e6db920c-1c08-476a-8a70-76fd027186cc)
+
+![IMG_4513](https://github.com/cammcinnes/MLWeather/assets/88452661/ae8fca63-dcb3-428b-8556-67bc65d34c6f)
 
 ## Recording Data
 
-This project utilizes a Arduino MKR 1010 WIFI and a BME680 to record time-stamped weather metrics every hour and send them to a google sheet to be analyzed. The weather metrics recorded are temperature, pressure, humidty, gas resistance, a calculated Air Quality Score(https://github.com/G6EJD/BME680-Example) and Altitude data. The arduino utilizes the pushingbox api (api.pushingbox.com) to send a get request to a google web app made with google app script.
+This project utilizes a Arduino MKR 1010 WIFI and a BME680 to record time-stamped weather metrics every hour and send them to a google sheet to be analyzed. The weather metrics recorded are temperature, pressure, humidity, gas resistance, a calculated air quality score (https://github.com/G6EJD/BME680-Example) and altitude data. The arduino utilizes the pushingbox api (api.pushingbox.com) to send a get request to a google web app made with google app script.
 
 ## Data Analysis
 
