@@ -1,7 +1,7 @@
 # MLWeather
-![IMG_4512](https://github.com/cammcinnes/MLWeather/assets/88452661/e6db920c-1c08-476a-8a70-76fd027186cc)
 
-![IMG_4513](https://github.com/cammcinnes/MLWeather/assets/88452661/ae8fca63-dcb3-428b-8556-67bc65d34c6f)
+<img src='IMG_4512.jpg' width='100'>
+<img src='IMG_4513.jpg' width='100'>
 
 ## Recording Data
 
