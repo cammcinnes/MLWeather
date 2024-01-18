@@ -54,9 +54,9 @@ String airQualityScore;
 void setup() {
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
+  // while (!Serial) {
+  //   ; // wait for serial port to connect. Needed for native USB port only
+  // }
 
   Wire.begin();
   if (!bme.begin()) {
@@ -153,7 +153,7 @@ void loop() {
     if(DEBUG){Serial.print(c);}
   }
   
-  // amount of time between measurements 1 hour (ms)
+  // amount of time between measurements 1 hour (ms)3600000
   delay(3600000);
 }
 
@@ -186,7 +186,7 @@ void GetGasReference(){
 }
 
 String CalculateIAQ(float score){
-  String IAQ_text = "Air_quality_is_";
+  String IAQ_text = "";
   score = (100-score)*5;
   if      (score >= 301)                  IAQ_text += "Hazardous";
   else if (score >= 201 && score <= 300 ) IAQ_text += "Very_Unhealthy";
