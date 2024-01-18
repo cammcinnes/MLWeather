@@ -1,7 +1,9 @@
 # MLWeather
 
-<img src='IMG_4512.jpg' width='400'>
-<img src='IMG_4513.jpg' width='400'>
+<p float="left">
+    <img src='IMG_4512.jpg' width='300'>
+    <img src='IMG_4513.jpg' width='300'>
+</p>
 
 ## Recording Data
 
